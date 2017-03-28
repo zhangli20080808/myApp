@@ -18,10 +18,10 @@ angular.module('guidePage.controller',[])
       }
     }
   });
-  //
-  // // 给开始体验按钮加点击事件
-  // document.getElementById("close").addEventListener('click', function(event) {
-  //   localStorage["isFirst"]=false;
-  //   $state.go("indexTab.home");
-  // }, false);
+
+  // 给开始体验按钮加点击事件
+  document.getElementById("close").addEventListener('click', function(event) {
+    localStorage["isFirst"]=false;
+    $state.go("indexTab.home");
+  }, false);
 });
