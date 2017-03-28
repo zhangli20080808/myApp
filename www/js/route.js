@@ -1,5 +1,9 @@
 // 总路由模块
-angular.module('route', ['ionic', 'starter.controllers', 'starter.services'])
+angular.module('route', [
+  'guidePage.route',
+  'home.route',
+  'starter.controllers',
+  'starter.services'])
 
   .config(function($stateProvider, $urlRouterProvider) {
 
@@ -48,7 +52,7 @@ angular.module('route', ['ionic', 'starter.controllers', 'starter.services'])
       })
 
       .state('tab.account', {
-        url: '/account',
+        url: '/account', 
         views: {
           'tab-account': {
             templateUrl: 'templates/tab-account.html',
@@ -58,6 +62,6 @@ angular.module('route', ['ionic', 'starter.controllers', 'starter.services'])
       });
 
     // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('/tab/dash');
+    $urlRouterProvider.otherwise('/tab/home');
 
   });

@@ -17,7 +17,14 @@
     </script>-->
 
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="lib/ionic/css/iconfont.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+    <!--自己的css-->
+    <link rel="stylesheet" href="css/guidePage/guidePage.css">
+    <link rel="stylesheet" href="css/home/home.css">
+
+
+
 
     <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
     <link href="css/ionic.app.css" rel="stylesheet">
@@ -34,17 +41,38 @@
     <script src="js/global.js"></script>
     <script src="js/route.js"></script>
     <script src="js/config.js"></script>
+
+
+    <!--功能模块js-->
+    <script src="areas/guidePage/guidePage_controller.js"></script>
+    <script src="areas/guidePage/guidePage_service.js"></script>
+    <script src="areas/guidePage/guidePage_route.js"></script>
+
+
+    <script src="areas/home/home_controller.js"></script>
+    <script src="areas/home/home_service.js"></script>
+    <script src="areas/home/home_route.js"></script>
+
+    <!--插件js-->
+    <script src="lib/jquery/dist/jquery.min.js"></script>
+    <script src="lib/swiper/dist/js/swiper.min.js"></script>
+
+
     <script src="js/controllers.js"></script>
     <script src="js/services.js"></script>
+
+
+
+
   </head>
   <body ng-app="starter">
     <!--
       The nav bar that will be updated as we navigate between views.
     -->
-    <ion-nav-bar class="bar-stable">
-      <ion-nav-back-button>
-      </ion-nav-back-button>
-    </ion-nav-bar>
+    <!--<ion-nav-bar class="bar-stable">-->
+      <!--<ion-nav-back-button>-->
+      <!--</ion-nav-back-button>-->
+    <!--</ion-nav-bar>-->
     <!--
       The views will be rendered in the <ion-nav-view> directive below
       Templates are in the /templates folder (but you could also
