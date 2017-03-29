@@ -3,8 +3,44 @@ angular.module('goodsList.controller', ['goodsList.service'])
   .controller('GoodsListCtrl', function ($scope, $window, GoodsListFty, $stateParams,$ionicLoading,$ionicHistory) {
 
 
-    console.log($stateParams);
-    console.log($stateParams.typeNumber);
+    console.log($stateParams);//Object {typeNumber: "10001"}
+    console.log($stateParams.typeNumber);//10001
+
+    var promise = GoodsListFty.refreshGoodsList();
+    promise.then(
+      //成功的回调
+      function (data) {
+        console.log(data)
+      //  然后把我们的数据绑定到$scope上
+      },
+      //失败的回调
+      function (reason) {
+        console.log(reason)
+        console.log("这是失败的回调函数")
+      }
+    );
+
+    console.log(1);
+    var promise2 = GoodsListFty.testPromise();
+    promise2.then(
+      //成功的回调
+      function (data) {
+        console.log(2);
+        return data;
+        //  然后把我们的数据绑定到$scope上
+      },
+      //失败的回调
+      function (reason) {
+        console.log(3)
+      }
+    //  可以不用层层嵌套  我们return到后面
+    ).then(function (data) {
+      console.log(8)
+    }).then(function () {
+      console.log(9)
+    })
+    console.log(4);
+
     $scope.$on('$ionicView.beforeEnter', function (e) {
       $scope.func_refreshGoodsList();
     });
@@ -61,43 +97,44 @@ angular.module('goodsList.controller', ['goodsList.service'])
     }
 
     // 获取更多数据列表
-    $scope.func_loadMoreGoodsList=function(){
-      $ionicLoading.show({
-        template: "正在载入数据，请稍后..."
-      });
-
-      $scope.obj_pagingInfo.pageNum=$scope.obj_pagingInfo.pageNum+1;
-      $scope.obj_pagingInfo.typeNumber=$stateParams.typeNumber;
-      var message=JSON.stringify($scope.obj_pagingInfo)
-
-      var promise = GoodsListFty.loadMoreGoodsList(message);
-      promise.then(
-        function (result) {
-
-          if($scope.obj_pagingInfo.pageNum==4){
-            $scope.pms_isMoreItemsAvailable=false;
-          }
-
-          if(result!=null){
-            $.each(result,function(i,item){
-              $scope.obj_goodsListData.push(item);
-            });
-          }else{
-            $scope.pms_isMoreItemsAvailable=false;
-          }
-        },
-        function (reason) {
-          alert(reason);
-        }
-      ).finally(function () {
-        // 停止广播infiniteScroll
-        $scope.$broadcast('scroll.infiniteScrollComplete');
-        setTimeout(function(){
-          $ionicLoading.hide();
-        },1000)
-      });
-
-    }
+    // $scope.func_loadMoreGoodsList=function(){
+    //   $ionicLoading.show({
+    //     template: "正在载入数据，请稍后..."
+    //   });
+    //
+    //   $scope.obj_pagingInfo.pageNum=$scope.obj_pagingInfo.pageNum+1;
+    //   $scope.obj_pagingInfo.typeNumber=$stateParams.typeNumber;
+    //   var message=JSON.stringify($scope.obj_pagingInfo)
+    //
+    //   //我们前台得调用
+    //   var promise = GoodsListFty.loadMoreGoodsList(message);
+    //   promise.then(
+    //     function (result) {
+    //
+    //       if($scope.obj_pagingInfo.pageNum==4){
+    //         $scope.pms_isMoreItemsAvailable=false;
+    //       }
+    //
+    //       if(result!=null){
+    //         $.each(result,function(i,item){
+    //           $scope.obj_goodsListData.push(item);
+    //         });
+    //       }else{
+    //         $scope.pms_isMoreItemsAvailable=false;
+    //       }
+    //     },
+    //     function (reason) {
+    //       alert(reason);
+    //     }
+    //   ).finally(function () {
+    //     // 停止广播infiniteScroll
+    //     $scope.$broadcast('scroll.infiniteScrollComplete');
+    //     setTimeout(function(){
+    //       $ionicLoading.hide();
+    //     },1000)
+    //   });
+    //
+    // }
 
     // 返回前一个页面
     $scope.goBack=function(){
