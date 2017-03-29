@@ -125,7 +125,7 @@
 
 /*功能导航*/
 #home #nav{
-  height:160px;
+  height:90px;
   width:100%;
   padding:0 3%;
   background-color:#fff;
@@ -143,7 +143,7 @@
   display:block;
   width:40px;
   height:40px;
-  margin:0px auto;
+  margin:0 auto;
 }
 #home #nav span h2{
   font-size:14px;

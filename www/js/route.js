@@ -2,7 +2,8 @@
 angular.module('route', [
   'guidePage.route',
   'home.route',
-  'tabs.route'
+  'tabs.route',
+  'category.route'
  ])
 
   .config(function($stateProvider, $urlRouterProvider) {

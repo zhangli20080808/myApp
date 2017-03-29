@@ -13,6 +13,9 @@ angular.module('home.controller', ['home.service'])
       initToutiaoSlide();
     });
 
+
+    //$emit只能向parent controller传递event与data $broadcast只能向child controller传递event与data$on用于接收event与data
+
     // 头部滚动条数据
     function getHeaderSlideData(){
       $scope.headerSlideData=[
@@ -42,16 +45,18 @@ angular.module('home.controller', ['home.service'])
     // 初始化头部滚动条
     function initHeaderSlide(){
       var headerSwiper = new Swiper('#headerSlider', {
+        //在slider前后各添加一张相同的slider
         slidesPerView: 1,
+        //能否手点
         paginationClickable: true,
         centeredSlides: true,
         autoplay: 2000,
         autoplayDisableOnInteraction: false,
         loop: true,
-        // 如果需要分页器 
+        // 如果需要分页器
         pagination: '.swiper-pagination',
         // 改变自动更新
-        observer:true,
+        observer:true,//当我们修改swiper的时候，他会自动重新实例化swiper
         observeParents:true
 
 
