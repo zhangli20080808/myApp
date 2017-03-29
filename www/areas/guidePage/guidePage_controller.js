@@ -1,7 +1,7 @@
 //第一个页面的额控制器
 angular.module('guidePage.controller',[])
 
-.controller('GuidePageCtrl',function ($scope) {
+.controller('GuidePageCtrl',function ($scope,$state) {
 
   // 引导页slide初始化
   var guideSlide = new Swiper('#guideSlide', {
@@ -20,8 +20,12 @@ angular.module('guidePage.controller',[])
   });
 
   // 给开始体验按钮加点击事件
-  document.getElementById("close").addEventListener('click', function(event) {
-    localStorage["isFirst"]=false;
-    $state.go("indexTab.home");
-  }, false);
+
+  $scope.goHome = function () {
+    $state.go('tab.home')
+  }
+  // document.getElementById("close").addEventListener('click', function(event) {
+  //   localStorage["isFirst"]=false;
+  //   $state.go("home");
+  // }, false);
 });
