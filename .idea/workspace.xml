@@ -66,16 +66,38 @@
       <file leaf-file-name="goodsList_controller.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/areas/goodsList/goodsList_controller.js">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="168">
               <caret line="40" column="6" lean-forward="true" selection-start-line="40" selection-start-column="6" selection-end-line="40" selection-end-column="6" />
+=======
+            <state relative-caret-position="385">
+              <caret line="35" column="29" lean-forward="false" selection-start-line="35" selection-start-column="29" selection-end-line="35" selection-end-column="29" />
+>>>>>>> 807a9846da84ef96f814ef1173efcf05075d969a
               <folding>
                 <element signature="e#1259#1588#0" expanded="false" />
                 <element signature="e#1656#2342#0" expanded="false" />
               </folding>
+<<<<<<< HEAD
+=======
             </state>
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="FIRST">
+              <first_editor relative-caret-position="63">
+                <caret line="3" column="1" lean-forward="false" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
+                <folding />
+              </first_editor>
+              <second_editor />
+>>>>>>> 807a9846da84ef96f814ef1173efcf05075d969a
+            </state>
+          </provider>
+        </entry>
+      </file>
+<<<<<<< HEAD
       <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
@@ -94,6 +116,13 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="271">
               <caret line="212" column="29" lean-forward="true" selection-start-line="212" selection-start-column="29" selection-end-line="212" selection-end-column="29" />
+=======
+      <file leaf-file-name="goodsList_service.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www/areas/goodsList/goodsList_service.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="460">
+              <caret line="220" column="27" lean-forward="true" selection-start-line="220" selection-start-column="27" selection-end-line="220" selection-end-column="27" />
+>>>>>>> 807a9846da84ef96f814ef1173efcf05075d969a
               <folding>
                 <element signature="e#174#2698#0" expanded="false" />
                 <element signature="e#220#443#0" expanded="false" />
@@ -201,6 +230,10 @@
         <option value="$PROJECT_DIR$/www/areas/guidePage/guidePage_controller.js" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/www/areas/goodsList/goodsList_service2.js" />
+<<<<<<< HEAD
+=======
+        <option value="$PROJECT_DIR$/www/areas/goodsList/goodsList_service.js" />
+>>>>>>> 807a9846da84ef96f814ef1173efcf05075d969a
         <option value="$PROJECT_DIR$/www/areas/goodsList/goodsList_controller.js" />
         <option value="$PROJECT_DIR$/www/areas/goodsList/goodsList_service.js" />
       </list>
@@ -614,12 +647,20 @@
       <updated>1490620449011</updated>
       <workItem from="1490620451062" duration="1626000" />
       <workItem from="1490682891056" duration="7777000" />
+<<<<<<< HEAD
       <workItem from="1490747912057" duration="14121000" />
+=======
+      <workItem from="1490747912057" duration="13818000" />
+>>>>>>> 807a9846da84ef96f814ef1173efcf05075d969a
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="23524000" />
+=======
+    <option name="totallyTimeSpent" value="23221000" />
+>>>>>>> 807a9846da84ef96f814ef1173efcf05075d969a
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -1056,6 +1097,7 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/www/areas/goodsList/goodsList_controller.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
@@ -1063,12 +1105,33 @@
           <folding>
             <element signature="e#1259#1588#0" expanded="false" />
             <element signature="e#1656#2342#0" expanded="false" />
+=======
+    <entry file="file://$PROJECT_DIR$/www/areas/goodsList/goodsList_service.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="460">
+          <caret line="220" column="27" lean-forward="true" selection-start-line="220" selection-start-column="27" selection-end-line="220" selection-end-column="27" />
+          <folding>
+            <element signature="e#174#2698#0" expanded="false" />
+            <element signature="e#220#443#0" expanded="false" />
+            <element signature="e#455#688#0" expanded="false" />
+            <element signature="e#700#924#0" expanded="false" />
+            <element signature="e#936#1160#0" expanded="false" />
+            <element signature="e#1172#1395#0" expanded="false" />
+            <element signature="e#1407#1629#0" expanded="false" />
+            <element signature="e#1641#1865#0" expanded="false" />
+            <element signature="e#1877#2105#0" expanded="false" />
+            <element signature="e#2117#2344#0" expanded="false" />
+            <element signature="e#2706#2720#0" expanded="false" />
+            <element signature="e#5079#5866#0" expanded="false" />
+            <element signature="e#5911#6477#0" expanded="false" />
+>>>>>>> 807a9846da84ef96f814ef1173efcf05075d969a
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/areas/goodsList/goodsList_service.js">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="271">
           <caret line="212" column="29" lean-forward="true" selection-start-line="212" selection-start-column="29" selection-end-line="212" selection-end-column="29" />
           <folding>
@@ -1085,6 +1148,13 @@
             <element signature="e#2706#2720#0" expanded="false" />
             <element signature="e#5079#5866#0" expanded="false" />
             <element signature="e#5911#6477#0" expanded="false" />
+=======
+        <state relative-caret-position="385">
+          <caret line="35" column="29" lean-forward="false" selection-start-line="35" selection-start-column="29" selection-end-line="35" selection-end-column="29" />
+          <folding>
+            <element signature="e#1259#1588#0" expanded="false" />
+            <element signature="e#1656#2342#0" expanded="false" />
+>>>>>>> 807a9846da84ef96f814ef1173efcf05075d969a
           </folding>
         </state>
       </provider>
