@@ -52,7 +52,8 @@
       </div>
     </div>
     <!--没有数据时候的用户提示-->
-    <div ng-hide="pms_isMoreItemsAvailable" style="text-align: center">
+    <div  class="no" ng-hide="pms_isMoreItemsAvailable" >
+      <img src="../../img/goodsList/no.jpg" alt="" style="width: 100%">
       <span>我去，地主家也没有余粮啊！</span>
     </div>
     <ion-infinite-scroll ng-if="pms_isMoreItemsAvailable" on-infinite="func_loadMoreGoodsList()" distance="1%">

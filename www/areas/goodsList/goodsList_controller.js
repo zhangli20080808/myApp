@@ -80,13 +80,7 @@ angular.module('goodsList.controller', ['goodsList.service'])
       promise.then(
         //成功的回调
         function (data) {
-          //如果数据不为空，我们将数据挂在到 $scope.obj_goodsListData数组中
-          if(data !=null){
-            //  然后把我们的数据绑定到$scope上
-            $scope.obj_goodsListData = data;
-          }else {
-            $scope.pms_isMoreItemsAvailable=false;
-          }
+          $scope.pms_isMoreItemsAvailable=false;
 
         },
         //失败的回调
