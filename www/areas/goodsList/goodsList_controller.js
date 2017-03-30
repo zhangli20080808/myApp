@@ -35,6 +35,7 @@ angular.module('goodsList.controller', ['goodsList.service'])
 
     // 商品列表数据  因为很多地方要用，我们抽取出来
     $scope.obj_goodsListData =[];
+    //无数据提示，默认让他有更多数据可以加载
     $scope.pms_isMoreItemsAvailable=true;
     // 分页查询对象 保存一些分页信息和查询条件
     $scope.obj_pagingInfo = {
@@ -64,6 +65,8 @@ angular.module('goodsList.controller', ['goodsList.service'])
 
     // 刷新获取最新的数据
     $scope.func_refreshGoodsList = function () {
+      //每次刷新  将页码值变为1
+      $scope.obj_pagingInfo.pageNum = 1;
 
       //根据商品编号 查询信息  传入分页信息中
       $scope.obj_pagingInfo.typeNumber = $stateParams.typeNumber;
@@ -77,9 +80,14 @@ angular.module('goodsList.controller', ['goodsList.service'])
       promise.then(
         //成功的回调
         function (data) {
-          // console.log(data)
-          $scope.obj_goodsListData = data;
-          //  然后把我们的数据绑定到$scope上
+          //如果数据不为空，我们将数据挂在到 $scope.obj_goodsListData数组中
+          if(data !=null){
+            //  然后把我们的数据绑定到$scope上
+            $scope.obj_goodsListData = data;
+          }else {
+            $scope.pms_isMoreItemsAvailable=false;
+          }
+
         },
         //失败的回调
         function (reason) {
