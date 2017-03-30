@@ -80,7 +80,13 @@ angular.module('goodsList.controller', ['goodsList.service'])
       promise.then(
         //成功的回调
         function (data) {
-          $scope.pms_isMoreItemsAvailable=false;
+          //如果数据不为空，我们将数据挂在到 $scope.obj_goodsListData数组中
+          if(data !=null){
+            //  然后把我们的数据绑定到$scope上
+            $scope.obj_goodsListData = data;
+          }else {
+            $scope.pms_isMoreItemsAvailable=false;
+          }
 
         },
         //失败的回调
@@ -102,6 +108,11 @@ angular.module('goodsList.controller', ['goodsList.service'])
 
     $scope.func_loadMoreGoodsList = function () {
 
+      //遮罩
+      $ionicLoading.show({
+        template: 'loading...'
+      });
+
       //增加分页信息
       $scope.obj_pagingInfo.pageNum ++;
       console.log($scope.obj_pagingInfo.pageNum);
@@ -118,11 +129,16 @@ angular.module('goodsList.controller', ['goodsList.service'])
       promise.then(
         //成功的回调
         function (data) {
-          console.log(data)
-          //用jquery中的each方法对新数据进行遍历，将每一条数据添加到obj_goodsListData数组中
-          $.each(data,function (index,item) {
-            $scope.obj_goodsListData.push(item)
-          });
+          // console.log(data)
+          if(data !=null){
+            //用jquery中的each方法对新数据进行遍历，将每一条数据添加到obj_goodsListData数组中
+            $.each(data,function (index,item) {
+              $scope.obj_goodsListData.push(item)
+            });
+          }else {
+            $scope.pms_isMoreItemsAvailable=false;
+          }
+
 
           //  然后把我们的数据绑定到$scope上
         },
@@ -133,6 +149,9 @@ angular.module('goodsList.controller', ['goodsList.service'])
       ).finally(function () {
         // 停止广播infiniteScroll
         $scope.$broadcast('scroll.infiniteScrollComplete');
+       setTimeout(function () {
+         $ionicLoading.hide();
+       },1500)
       });
     };
 
