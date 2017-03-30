@@ -64,7 +64,16 @@ angular.module('goodsList.controller', ['goodsList.service'])
 
     // 刷新获取最新的数据
     $scope.func_refreshGoodsList = function () {
-      var promise = GoodsListFty.refreshGoodsList();
+
+      //根据商品编号 查询信息  传入分页信息中
+      $scope.obj_pagingInfo.typeNumber = $stateParams.typeNumber;
+
+
+      //我们需要把这些分页信息都传给后台 －－》message 变为字符串
+      var message = JSON.stringify( $scope.obj_pagingInfo);
+      console.log(message)
+
+      var promise = GoodsListFty.refreshGoodsList(message);
       promise.then(
         //成功的回调
         function (data) {
@@ -91,7 +100,19 @@ angular.module('goodsList.controller', ['goodsList.service'])
 
     $scope.func_loadMoreGoodsList = function () {
 
-      var promise = GoodsListFty.loadMoreGoodsList();
+      //增加分页信息
+      $scope.obj_pagingInfo.pageNum ++;
+      console.log($scope.obj_pagingInfo.pageNum);
+
+      //根据商品编号 查询信息  传入分页信息中
+      $scope.obj_pagingInfo.typeNumber = $stateParams.typeNumber;
+
+
+      //我们需要把这些分页信息都传给后台 －－》message 变为字符串
+       var message = JSON.stringify( $scope.obj_pagingInfo);
+       // console.log(message);
+
+      var promise = GoodsListFty.loadMoreGoodsList(message);
       promise.then(
         //成功的回调
         function (data) {
@@ -109,10 +130,7 @@ angular.module('goodsList.controller', ['goodsList.service'])
         }
       ).finally(function () {
         // 停止广播infiniteScroll
-        $scope.$broadcast('scroll.refreshComplete');
-        setTimeout(function(){
-          $ionicLoading.hide();
-        },2000)
+        $scope.$broadcast('scroll.infiniteScrollComplete');
       });
     };
 
