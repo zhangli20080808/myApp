@@ -2,23 +2,10 @@
 angular.module('goodsList.controller', ['goodsList.service'])
   .controller('GoodsListCtrl', function ($scope, $window, GoodsListFty, $stateParams,$ionicLoading,$ionicHistory) {
 
+    //
+    // console.log($stateParams);//Object {typeNumber: "10001"}
+    // console.log($stateParams.typeNumber);//10001
 
-    console.log($stateParams);//Object {typeNumber: "10001"}
-    console.log($stateParams.typeNumber);//10001
-
-    var promise = GoodsListFty.refreshGoodsList();
-    promise.then(
-      //成功的回调
-      function (data) {
-        console.log(data)
-      //  然后把我们的数据绑定到$scope上
-      },
-      //失败的回调
-      function (reason) {
-        console.log(reason)
-        console.log("这是失败的回调函数")
-      }
-    );
 
     console.log(1);
     var promise2 = GoodsListFty.testPromise();
@@ -40,15 +27,16 @@ angular.module('goodsList.controller', ['goodsList.service'])
       console.log(9)
     })
     console.log(4);
-
+    //在我们进入视图页面的时候，调用我们的刷新方法
     $scope.$on('$ionicView.beforeEnter', function (e) {
       $scope.func_refreshGoodsList();
+
     });
 
-    // 商品列表数据
+    // 商品列表数据  因为很多地方要用，我们抽取出来
     $scope.obj_goodsListData =[];
     $scope.pms_isMoreItemsAvailable=true;
-    // 分页查询对象
+    // 分页查询对象 保存一些分页信息和查询条件
     $scope.obj_pagingInfo = {
       amountMax: "",
       amountMin: "",
@@ -61,80 +49,76 @@ angular.module('goodsList.controller', ['goodsList.service'])
       keyWord: "",
       loginName: "",
       billType: "",
+      //第一页
       pageNum: 1,
+      //每页10条
       pageSize: 10,
+      //是否排序
       sortFlag: "0",
+      //升序还是降序
       sortType: "desc",
+      //分类到商品详细页面canshu  通过$stateParams传给我们的对象，变成文本字符穿，再传给我们的后台
       typeNumber:""
     };
 
 
     // 刷新获取最新的数据
     $scope.func_refreshGoodsList = function () {
-
-      $scope.obj_pagingInfo.pageNum=1;
-      $scope.obj_pagingInfo.typeNumber=$stateParams.typeNumber;
-      var message=JSON.stringify($scope.obj_pagingInfo.pageNum)
-
-      var promise = GoodsListFty.refreshGoodsList(message);
+      var promise = GoodsListFty.refreshGoodsList();
       promise.then(
-        function (result) {
-          if(result!=null){
-            $scope.obj_goodsListData = result;
-            $scope.pms_isMoreItemsAvailable=true;
-          }else{
-            $scope.pms_isMoreItemsAvailable=false;
-          }
-
+        //成功的回调
+        function (data) {
+          // console.log(data)
+          $scope.obj_goodsListData = data;
+          //  然后把我们的数据绑定到$scope上
         },
+        //失败的回调
         function (reason) {
-          alert(reason);
+          console.log("这是失败的回调函数")
         }
       ).finally(function () {
-        // 停止广播ion-refresher
-        $scope.$broadcast('scroll.refreshComplete');
+        // 停止广播infiniteScroll
+            $scope.$broadcast('scroll.refreshComplete');
+            setTimeout(function(){
+              $ionicLoading.hide();
+            },5000)
       });
-    }
 
-    // 获取更多数据列表
-    // $scope.func_loadMoreGoodsList=function(){
-    //   $ionicLoading.show({
-    //     template: "正在载入数据，请稍后..."
-    //   });
-    //
-    //   $scope.obj_pagingInfo.pageNum=$scope.obj_pagingInfo.pageNum+1;
-    //   $scope.obj_pagingInfo.typeNumber=$stateParams.typeNumber;
-    //   var message=JSON.stringify($scope.obj_pagingInfo)
-    //
-    //   //我们前台得调用
-    //   var promise = GoodsListFty.loadMoreGoodsList(message);
-    //   promise.then(
-    //     function (result) {
-    //
-    //       if($scope.obj_pagingInfo.pageNum==4){
-    //         $scope.pms_isMoreItemsAvailable=false;
-    //       }
-    //
-    //       if(result!=null){
-    //         $.each(result,function(i,item){
-    //           $scope.obj_goodsListData.push(item);
-    //         });
-    //       }else{
-    //         $scope.pms_isMoreItemsAvailable=false;
-    //       }
-    //     },
-    //     function (reason) {
-    //       alert(reason);
-    //     }
-    //   ).finally(function () {
-    //     // 停止广播infiniteScroll
-    //     $scope.$broadcast('scroll.infiniteScrollComplete');
-    //     setTimeout(function(){
-    //       $ionicLoading.hide();
-    //     },1000)
-    //   });
-    //
-    // }
+
+    };
+
+    // 获取更多数据列表  上拉加载更多数据效果
+
+    $scope.func_loadMoreGoodsList = function () {
+
+      var promise = GoodsListFty.loadMoreGoodsList();
+      promise.then(
+        //成功的回调
+        function (data) {
+          console.log(data)
+          //用jquery中的each方法对新数据进行遍历，将每一条数据添加到obj_goodsListData数组中
+          $.each(data,function (index,item) {
+            $scope.obj_goodsListData.push(item)
+          });
+
+          //  然后把我们的数据绑定到$scope上
+        },
+        //失败的回调
+        function (reason) {
+          console.log("这是失败的回调函数")
+        }
+      ).finally(function () {
+        // 停止广播infiniteScroll
+        $scope.$broadcast('scroll.refreshComplete');
+        setTimeout(function(){
+          $ionicLoading.hide();
+        },2000)
+      });
+    };
+
+
+
+
 
     // 返回前一个页面
     $scope.goBack=function(){

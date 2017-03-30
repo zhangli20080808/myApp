@@ -1,8 +1,6 @@
-//全局变量
+// 全局变量文件
 angular.module('global', [])
-//在这里我们可以定义很多,他里面是个对象
-  .constant({
-    SERVER_PATH:"127.0.0.1"//服务器地址
+  .constant("GlobalVariable",{
+    'SERVER_PATH':'192.168.1.1:8080/',
+    'VERSION':"1.2.1"
   })
-
-
