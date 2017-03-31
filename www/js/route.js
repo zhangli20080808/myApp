@@ -6,7 +6,8 @@ angular.module('route', [
   'category.route',
   'goodsList.route',
   'details.route',
-  'search.route'
+  'search.route',
+  'account.route'
  ])
 
   .config(function($stateProvider, $urlRouterProvider) {
