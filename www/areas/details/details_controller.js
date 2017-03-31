@@ -2,32 +2,18 @@
 angular.module('details.controller', ['details.service'])
   .controller('DetailsCtrl', function ($scope, $stateParams,$state,$ionicHistory) {
 
-    //$scope.obj_cartCount = {
-    //  count: "0"
-    //}
-    //
-    //$scope.$on('$ionicView.beforeEnter', function (e) {
-    //  IndexdbJs.getAll("cart",function(data){
-    //    for(var i =0;i<data.length;i++){
-    //      $scope.obj_cartCount.count=parseInt($scope.obj_cartCount.count)+parseInt(data[i].number);
-    //    }
-    //  },null)
-    //});
-    //
-    //
     // 通过后台获取到的商品详细信息
     $scope.obj_goodsInfo = {
       goodsId: "200067",
-      description: "若昕 韩版睡衣女冬法兰绒家居服加厚珊瑚绒女人卡通甜美睡衣秋冬套装 66651K 女 M",
+      description: "若昕1 韩版睡衣女冬法兰绒家居服加厚珊瑚绒女人卡通甜美睡衣秋冬套装 66651K 女 M",
       prise: "66",
-      picture: "img/details/detail01.jpg",
+      picture: [],
       src: "",
       //是否让登陆的人关注
       isFork: false,
-      colorGroup: [{name: "红色", value: "red"}, {name: "蓝色", value: "blue"},{name: "米黄", value: "yellow"}],
+      colorGroup: [{name: "红色", value: "red"}, {name: "蓝色", value: "blue"}],
       sizeGroup: [{name: "s", value: "s"}, {name: "m", value: "m"}, {name: "l", value: "l"}]
-    };
-
+    }
     // 用户选择信息，进行维护
     $scope.obj_goodsDetailInfo = {
       goodsId: $scope.obj_goodsInfo.goodsId,
@@ -50,45 +36,10 @@ angular.module('details.controller', ['details.service'])
       if ($scope.obj_goodsDetailInfo.number != 1) {
         $scope.obj_goodsDetailInfo.number--;
       }
-    }
-    //
-    //
-    //
-    //
-    //// 加入购物车方法
-    //$scope.func_addToCart = function () {
-    //
-    //  var obj_newData={};
-    //  angular.copy($scope.obj_goodsDetailInfo,obj_newData);
-    //
-    //  obj_newData.goodsId =obj_newData.goodsId + "-" + obj_newData.color + "-" + obj_newData.size;
-    //
-    //  IndexdbJs.get(obj_newData.goodsId,"cart",
-    //    function(data){
-    //      if(data==null||data==undefined){
-    //        //不存在商品就添加
-    //        IndexdbJs.add("cart", obj_newData, function () {
-    //          //变更购物车数量
-    //          $scope.obj_cartCount.count=parseInt($scope.obj_cartCount.count)+parseInt($scope.obj_goodsDetailInfo.number);
-    //          $scope.$digest();
-    //        }, null);
-    //      }
-    //      else {
-    //        // 存在商品
-    //        // 是新增加6个数量，所以要处理一下，这个还影响下面变更购物车数量的逻辑
-    //        obj_newData.number=parseInt(obj_newData.number)+parseInt(data.number);
-    //
-    //        IndexdbJs.update("cart", obj_newData, function () {
-    //          //变更购物车数量
-    //          $scope.obj_cartCount.count=parseInt($scope.obj_cartCount.count)+parseInt($scope.obj_goodsDetailInfo.number);
-    //          $scope.$digest();
-    //        }, null);
-    //      }
-    //    },
-    //    null
-    //  )
-    //
-    //}
+    };
+    // 加入购物车方法
+    //angular提供了一个可以复制对象的api——copy(source,destination)，它会对source对象执行深拷贝。
+
     //
     // 返回首页面
     $scope.func_goHome=function(){
